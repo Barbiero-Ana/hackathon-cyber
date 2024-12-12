@@ -1,13 +1,10 @@
 from rich.theme import Theme
 from rich.console import Console
-from MODULOS.invest import investimentos
+from MODULOS.invest import investimento
 from MODULOS.cambio import cambio_trade
 from MODULOS.relatorio import registrar_despesas, gerar_relatorio
 from MODULOS.transfe import transferencia
 from MODULOS.linguas import textos
-
-
-
 
 # Tema para estilização
 estilo = Theme({
@@ -35,7 +32,128 @@ cliente2 = {
     'taxa_moeda': 1.0
 }
 
-
+textos = {
+    "pt": {
+        "menu_opcoes": "\n=== Menu de Opções ===",
+        "investir": "[1] Investir",
+        "cambio": "[2] Câmbio",
+        "conversao_moeda": "=== Conversão de Moeda ===",
+        "registrar_despesas": "[3] Registrar Despesas",
+        "relatorio":"[4] Relatório de gastos",
+        "transferir": "[5] Transferir entre Usuários",
+        "sair": "[6] Sair",
+        "escolha": "\nEscolha uma opção: ",
+        "saldo_insuficiente": "Saldo insuficiente! Tente novamente com um valor menor.",
+        "valor_invalido": "Valor inválido!",
+        "saindo": "\nSaindo do sistema. Até logo!",
+        "opcao_invalida": "\nOpção inválida. Tente novamente."
+    },
+    "en": {
+        "menu_opcoes": "\n=== Options Menu ===",
+        "investir": "[1] Invest",
+        "cambio": "[2] Currency Exchange",
+        "conversao_moeda": "=== Currency Conversion ===",
+        "registrar_despesas": "[3] Register Expenses",
+        "relatorio": "[4] Report" ,
+        "transferir": "[5] Transfer Between Users",
+        "sair": "[6] Exit",
+        "escolha": "\nChoose an option: ",
+        "saldo_insuficiente": "Insufficient balance! Please try again with a smaller amount.",
+        "valor_invalido": "Invalid amount!",
+        "saindo": "\nExiting the system. Goodbye!",
+        "opcao_invalida": "\nInvalid option. Please try again."
+    },
+    "es": {
+        "menu_opcoes": "\n=== Menú de Opciones ===",
+        "investir": "[1] Invertir",
+        "cambio": "[2] Cambio",
+        "conversao_moeda": "=== Conversión de Moneda ===",
+        "registrar_despesas": "[3] Registrar Gastos",
+        "relatorio": "[4] Informe",
+        "transferir": "[5] Transferir entre Usuarios",
+        "sair": "[6] Salir",
+        "escolha": "\nElija una opción: ",
+        "saldo_insuficiente": "¡Saldo insuficiente! Intente de nuevo con una cantidad menor.",
+        "valor_invalido": "¡Valor inválido!",
+        "saindo": "\nSaliendo del sistema. ¡Hasta luego!",
+        "opcao_invalida": "\nOpción inválida. Intente de nuevo."
+    },
+    "fr": {
+        "menu_opcoes": "\n=== Menu des Options ===",
+        "investir": "[1] Investir",
+        "cambio": "[2] Échange de Devises",
+        "conversao_moeda": "=== Conversion de Monnaie ===",
+        "registrar_despesas": "[3] Enregistrer des Dépenses",
+        "relatorio": "[4] Informe",
+        "transferir": "[5] Transférer entre Utilisateurs",
+        "sair": "[6] Quitter",
+        "escolha": "\nChoisissez une option : ",
+        "saldo_insuficiente": "Solde insuffisant ! Veuillez réessayer avec un montant plus petit.",
+        "valor_invalido": "Montant invalide !",
+        "saindo": "\nFermeture du système. À bientôt !",
+        "opcao_invalida": "\nOption invalide. Veuillez réessayer."
+    },
+    "de": {
+        "menu_opcoes": "\n=== Optionsmenü ===",
+        "investir": "[1] Investieren",
+        "cambio": "[2] Währungsumtausch",
+        "conversao_moeda": "=== Währungsumrechnung ===",
+        "registrar_despesas": "[3] Ausgaben erfassen",
+        "relatorio": "[4] Bericht",
+        "transferir": "[5] Zwischen Benutzern überweisen",
+        "sair": "[6] Beenden",
+        "escolha": "\nWählen Sie eine Option: ",
+        "saldo_insuficiente": "Unzureichendes Guthaben! Bitte versuchen Sie es mit einem kleineren Betrag.",
+        "valor_invalido": "Ungültiger Betrag!",
+        "saindo": "\nSystem wird beendet. Auf Wiedersehen!",
+        "opcao_invalida": "\nUngültige Option. Bitte versuchen Sie es erneut."
+    },
+    "ru": {
+        "menu_opcoes": "\n=== Меню опций ===",
+        "investir": "[1] Инвестировать",
+        "cambio": "[2] Обмен валюты",
+        "conversao_moeda": "=== Конвертация валюты ===",
+        "registrar_despesas": "[3] Зарегистрировать расходы",
+        "relatorio": "[4] Отчет",
+        "transferir": "[5] Перевод между пользователями",
+        "sair": "[6] Выйти",
+        "escolha": "\nВыберите опцию: ",
+        "saldo_insuficiente": "Недостаточно средств! Попробуйте еще раз с меньшей суммой.",
+        "valor_invalido": "Неверное значение!",
+        "saindo": "\nВыход из системы. До свидания!",
+        "opcao_invalida": "\nНеверная опция. Попробуйте еще раз."
+    },
+    "jp": {
+        "menu_opcoes": "\n=== オプションメニュー ===",
+        "investir": "[1] 投資",
+        "cambio": "[2] 両替",
+        "conversao_moeda": "=== 通貨の変換 ===",
+        "registrar_despesas": "[3] 支出を記録する",
+        "relatorio": "[4] レポート" ,
+        "transferir": "[5] ユーザー間で送金する",
+        "sair": "[6] 終了する",
+        "escolha": "\nオプションを選択してください: ",
+        "saldo_insuficiente": "残高不足です！少ない金額で再試行してください。",
+        "valor_invalido": "無効な金額です！",
+        "saindo": "\nシステムを終了します。さようなら！",
+        "opcao_invalida": "\n無効なオプションです。再試行してください。"
+    },
+    "ko": {
+        "menu_opcoes": "\n=== 옵션 메뉴 ===",
+        "investir": "[1] 투자",
+        "cambio": "[2] 환전",
+        "conversao_moeda": "=== 통화 변환 ===",
+        "registrar_despesas": "[3] 지출 등록",
+        "relatorio": "[4] 보고서",
+        "transferir": "[5] 사용자 간 이체",
+        "sair": "[6] 종료",
+        "escolha": "\n옵션을 선택하세요: ",
+        "saldo_insuficiente": "잔액이 부족합니다! 더 적은 금액으로 다시 시도하세요.",
+        "valor_invalido": "잘못된 금액입니다!",
+        "saindo": "\n시스템을 종료합니다. 안녕히 가세요!",
+        "opcao_invalida": "\n잘못된 옵션입니다. 다시 시도하세요."
+    }
+}
 
 def selecionar_idioma():
     console.print("\nSelecione o idioma / Choose the language:", style='titulo')
@@ -56,14 +174,11 @@ def selecionar_idioma():
         else:
             console.print("Opção inválida! / Invalid option!", style='error')
 
-
-
-
 def menu(idioma):
     t = textos[idioma]
     
     while True:
-        console.print("\n=== Menu de Opções ===",style='titulo')
+       # console.print("\n=== Menu de Opções ===",style='titulo')
         
         while True:
             console.print(t["menu_opcoes"], style='titulo')
@@ -71,23 +186,27 @@ def menu(idioma):
             console.print(t["investir"], style='entrada')
             console.print(t["cambio"], style='entrada')
             console.print(t["registrar_despesas"], style='entrada')
+            console.print(t["relatorio"], style='entrada')
             console.print(t["transferir"], style='entrada')
             console.print(t["sair"], style='entrada')
 
             opcao = input(t["escolha"])
 
 
-            opcao = input("\nEscolha uma opção: ")
+         #   opcao = input("\nEscolha uma opção: ")
 
             if opcao == '1':
-                investimentos(cliente1)
+                investimento(cliente1) 
             elif opcao == '2':
                 cambio_trade(cliente1)
             elif opcao == '3':
                 despesas = registrar_despesas()
-                gerar_relatorio(despesas)
+                
             elif opcao == '4':
-                console.print(t["\n=== Transferência entre Usuários ==="], style='titulo')
+                gerar_relatorio(despesas)
+
+            elif opcao == '5':
+                console.print("\n=== Transferência entre Usuários ===", style='titulo')
                 try:
                     while True:
                         valor = float(input(f"\nDigite o valor para transferir de {cliente1['nome']} para {cliente2['nome']}: "))
@@ -99,13 +218,13 @@ def menu(idioma):
                 except ValueError:
                     console.print(t["Valor inválido!"], style='error')
             
-            elif opcao == '5':
-                console.print(t["\nSaindo do sistema. Até logo!"], style='certo')
+            elif opcao == '6':
+                console.print("\nSaindo do sistema. Até logo!", style='certo')
                 break
             
             else:
-                console.print(t["\nOpção inválida. Tente novamente."], style='error')
+                console.print("\nOpção inválida. Tente novamente.", style='error')
 
 if __name__ == "__main__":
     idioma_selecionado = selecionar_idioma()
-    menu(idioma_selecionado)
+    menu(idioma_selecionado)    
