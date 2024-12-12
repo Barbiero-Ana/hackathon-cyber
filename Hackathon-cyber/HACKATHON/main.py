@@ -168,7 +168,7 @@ def selecionar_idioma():
     
     while True:
         opcao = input("\nDigite o número da opção / Enter the option number: ")
-        linguas = {'1': 'pt', '2': 'en', '3': 'es', '4': 'fr', '5': 'de', '6': 'ru', '7': 'ja', '8': 'ko'}
+        linguas = {'1': 'pt', '2': 'en', '3': 'es', '4': 'fr', '5': 'de', '6': 'ru', '7': 'jp', '8': 'ko'}
         if opcao in linguas:
             return linguas[opcao]
         else:
@@ -189,6 +189,7 @@ def menu(idioma):
             console.print(t["relatorio"], style='entrada')
             console.print(t["transferir"], style='entrada')
             console.print(t["sair"], style='entrada')
+            console.print("[0] Voltar para escolher idioma", style='entrada')
 
             opcao = input(t["escolha"])
 
@@ -221,10 +222,16 @@ def menu(idioma):
             elif opcao == '6':
                 console.print("\nSaindo do sistema. Até logo!", style='certo')
                 break
+
+            elif opcao == '0':  # Se o usuário escolher "Voltar", será solicitado que ele escolha o idioma novamente
+                return True 
             
             else:
                 console.print("\nOpção inválida. Tente novamente.", style='error')
 
 if __name__ == "__main__":
-    idioma_selecionado = selecionar_idioma()
-    menu(idioma_selecionado)    
+    while True:
+        idioma_selecionado = selecionar_idioma()
+        voltar = menu(idioma_selecionado)
+        if not voltar:
+            break  
