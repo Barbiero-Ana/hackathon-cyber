@@ -13,7 +13,7 @@ estilo = Theme({
 console = Console(theme=estilo)
 
 # Dicionário de opções de investimento
-investimentos = {
+menu_invest = {
     1: ('Poupança', 0.5),
     2: ('CDB', 0.8),
     3: ('Fundos Imobiliários', 1.2),
@@ -23,13 +23,13 @@ investimentos = {
     7: ('Fundo Multimercado', 1.1)
 }
 
-def opcoes_investimento():
-    console.print('\nOpções de investimento disponíveis:\n', style='titulo')
-    for chave, (nome, taxa) in investimentos.items():
-        console.print(f'{chave}. {nome} - Rendimento de {taxa}% ao mês', style='entrada')
-
 def rendimento(valor, taxa, meses):
     return valor * (1 + (taxa / 100)) ** meses
+
+def opcoes_investimento():
+    console.print('\nOpções de investimento disponíveis:\n', style='titulo')
+    for chave, (nome, taxa) in menu_invest.items():  # Corrigido para 'menu_invest'
+        console.print(f'{chave}. {nome} - Rendimento de {taxa}% ao mês', style='entrada')
 
 def investimento(cliente):
     console.print("\n=== Central de investimentos ===", style='titulo')
@@ -37,7 +37,7 @@ def investimento(cliente):
 
     try:
         opcao = int(input('\nEscolha onde deseja investir seus fundos (digite o número correspondente): '))
-        if opcao not in investimentos:
+        if opcao not in menu_invest:  # Corrigido para 'menu_invest'
             console.print('Opção inválida!', style='error')
             return
 
@@ -51,7 +51,7 @@ def investimento(cliente):
             console.print('O tempo deve ser maior que zero!', style='error')
             return
 
-        nome_invest, taxa = investimentos[opcao]
+        nome_invest, taxa = menu_invest[opcao]  # Corrigido para 'menu_invest'
         valor_final = rendimento(valor, taxa, meses)
         cliente['saldo'] -= valor
 
